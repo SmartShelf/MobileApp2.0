@@ -50,7 +50,7 @@ namespace SmartShelf
                 masterPageItems.Add(new MasterPageItem
                 {
                     Title = shelfItem.Name,
-                    IconSource = "dashboard_36_72.png",
+                    IconSource = string.Empty,
                     TargetType = typeof(DashboardPage)
                 });
 
@@ -58,14 +58,27 @@ namespace SmartShelf
                 {
                     masterPageItems.Add(new MasterPageItem
                     {
-                        Title = string.Format("     {0}", scaleItem.Name),
-                        IconSource = "dashboard_36_72.png",
+                        Title = string.Format("          {0} - {1}", scaleItem.Name, scaleItem.ScaleName),
+                        IconSource = string.Empty,
                         TargetType = typeof(DashboardPage)
                     });
                 }
             }
 
             shelvesListView.ItemsSource = masterPageItems;
+
+            shelvesListView.ItemSelected += ShelvesListView_ItemSelected;
+        }
+
+        private void ShelvesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as MasterPageItem;
+            if (item != null)
+            {
+                App.MasterDetail.Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+                staticListView.SelectedItem = null;
+                App.MasterDetail.IsPresented = false;
+            }
         }
 
         private void StaticListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

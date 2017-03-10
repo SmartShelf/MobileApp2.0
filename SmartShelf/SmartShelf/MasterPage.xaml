@@ -5,19 +5,20 @@
              Title="MasterPage"
              Icon="hamburger.png"
              >
-    <StackLayout HorizontalOptions="FillAndExpand">
-        <ListView x:Name="staticListView" HorizontalOptions="FillAndExpand" SeparatorVisibility="Default">
+    <StackLayout Orientation="Vertical" Padding="10,10,10,10">
+        <ListView x:Name="staticListView" SeparatorVisibility="Default" HeightRequest="144">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell Text="{Binding Title}" ImageSource="{Binding IconSource}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
         <Label Text="My SmartShelves" FontAttributes="Bold" />
-        <ListView x:Name="shelvesListView" HorizontalOptions="FillAndExpand" SeparatorVisibility="Default">
+        <ListView x:Name="shelvesListView" SeparatorVisibility="Default">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell Text="{Binding Title}" ImageSource="{Binding IconSource}" />
+                    <TextCell Text="{Binding Title}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -11,12 +11,23 @@
         <Label Text="Shelf Identifier" FontSize="Small"/>
         <Entry x:Name="shelfIdentifier" Placeholder="" />
 
-        <Label Text="Scale 1 Name" FontSize="Small"/>
-        <Entry x:Name="scale1Name" Placeholder="" />
+    
+            <Label Text="Scale 1" FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Label Text="Scale 1 Name" FontSize="Small"/>
+            <Entry x:Name="scale1Name" Placeholder="" />
 
-        <Label Text="Select Product By" FontSize="Small"/>
-        <Entry x:Name="selectProductBy" Placeholder="" />
+            <Label Text="Select Product By" FontSize="Small"/>
+            <Entry x:Name="select1ProductBy" Placeholder="" />
         
+
+        
+            <Label Text="Scale 2" FontSize="Large" HorizontalTextAlignment="Center"/>
+            <Label Text="Scale 2 Name" FontSize="Small"/>
+            <Entry x:Name="scale2Name" Placeholder="" />
+
+            <Label Text="Select Product By" FontSize="Small"/>
+            <Entry x:Name="select2ProductBy" Placeholder="" />
+       
+
     </StackLayout>
-    <Label Text="Add a SmartSelf" VerticalOptions="Center" HorizontalOptions="Center" />
 </ContentPage>
