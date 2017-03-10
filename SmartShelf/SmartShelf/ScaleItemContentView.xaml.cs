@@ -10,6 +10,7 @@ namespace SmartShelf
 {
 	public partial class ScaleItemContentView : Frame
 	{
+		
 		public ScaleItemContentView (ScaleItem scaleItem)
 		{
             this.BindingContext = scaleItem;
@@ -39,6 +40,12 @@ namespace SmartShelf
 
             var shoppingCartImage = new Image();
             shoppingCartImage.Source = "shopping_cart_plus_36.png";
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.Tapped += (s, e) =>
+			{
+				Device.OpenUri(new Uri("https://www.amazon.com/Quaker-Instant-Oatmeal-Variety-Breakfast/dp/B01KMHY5XI?th=1"));
+			};
+			shoppingCartImage.GestureRecognizers.Add(tapGestureRecognizer);
 
             AbsoluteLayout.SetLayoutBounds(shoppingCartImage, new Rectangle(1f, 1f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(shoppingCartImage, AbsoluteLayoutFlags.PositionProportional);

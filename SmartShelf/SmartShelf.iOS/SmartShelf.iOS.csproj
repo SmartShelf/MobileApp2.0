@@ -114,6 +114,29 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\hamburger.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\icon_72.png" />
+    <BundleResource Include="Resources\dashboard_36.png" />
+    <BundleResource Include="Resources\dashboard_36_72.png" />
+    <BundleResource Include="Resources\dashboard_72.png" />
+    <BundleResource Include="Resources\facebook_52_72.png" />
+    <BundleResource Include="Resources\facebook_72.png" />
+    <BundleResource Include="Resources\google_plus_52_72.png" />
+    <BundleResource Include="Resources\google_plus_72.png" />
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\info_circle_18_36.png" />
+    <BundleResource Include="Resources\info_circle_36.png" />
+    <BundleResource Include="Resources\instagram_52_72.png" />
+    <BundleResource Include="Resources\instagram_72.png" />
+    <BundleResource Include="Resources\plus_circle_36.png" />
+    <BundleResource Include="Resources\plus_circle_36_72.png" />
+    <BundleResource Include="Resources\plus_circle_72.png" />
+    <BundleResource Include="Resources\shopping_cart_plus_36.png" />
+    <BundleResource Include="Resources\twitter_52_72.png" />
+    <BundleResource Include="Resources\twitter_72.png" />
+    <BundleResource Include="Resources\hamburger%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -132,6 +155,55 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Cross.Pie.Forms">
+      <HintPath>..\..\packages\Cross.Pie.Forms-2.0\lib\ios\Cross.Pie.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="NGraphics">
+      <HintPath>..\..\packages\NGraphics.0.4.0\lib\Xamarin.iOS10\NGraphics.dll</HintPath>
+    </Reference>
+    <Reference Include="NGraphics.iOS">
+      <HintPath>..\..\packages\NGraphics.0.4.0\lib\Xamarin.iOS10\NGraphics.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl">
+      <HintPath>..\..\packages\NControl.0.9.1.0\lib\Xamarin.iOS10\NControl.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl.iOS">
+      <HintPath>..\..\packages\NControl.0.9.1.0\lib\Xamarin.iOS10\NControl.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl.Controls">
+      <HintPath>..\..\packages\NControl.Controls.0.9.4.1\lib\Xamarin.iOS10\NControl.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl.Controls.iOS">
+      <HintPath>..\..\packages\NControl.Controls.0.9.4.1\lib\Xamarin.iOS10\NControl.Controls.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="BTProgressHUD">
+      <HintPath>..\..\packages\BTProgressHUD.1.2.0.3\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\packages\Rx-Interfaces.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\..\packages\Rx-Core.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\..\packages\Rx-Linq.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\..\packages\Rx-PlatformServices.2.2.5\lib\portable-windows8+net45+wp8\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector">
+      <HintPath>..\..\packages\SimpleInjector.3.1.5\lib\netstandard1.5\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl.Mvvm">
+      <HintPath>..\..\packages\NControl.Mvvm.0.6.7.69\lib\Xamarin.iOS10\NControl.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="NControl.Mvvm.iOS">
+      <HintPath>..\..\packages\NControl.Mvvm.0.6.7.69\lib\Xamarin.iOS10\NControl.Mvvm.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="..\SmartShelf\SmartShelf.projitems" Label="Shared" Condition="Exists('..\SmartShelf\SmartShelf.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

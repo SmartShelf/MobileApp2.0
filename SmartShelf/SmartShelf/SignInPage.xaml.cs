@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 using Xamarin.Forms;
 
@@ -10,20 +11,23 @@ namespace SmartShelf
 {
 	public partial class SignInPage : ContentPage
 	{
+		HttpClient client;
+
 		public SignInPage ()
 		{
+			client = new HttpClient();
             this.BindingContext = this;
 			InitializeComponent ();
 		}
 
-        private void submit_button_Clicked(object sender, EventArgs e)
+        private async void submit_button_Clicked(object sender, EventArgs e)
         {
             try
             {
                 var username = this.username.Text;
                 var password = this.password.Text;
-
-                if (SmartShelfService.Authenticate(username, password)) {
+				var isAuth = await SmartShelfService.Authenticate(username, password, client);
+                if (isAuth) {
                     var mainPage = new MainPage();
                     mainPage.Title = "Main";
                     mainPage.Master = new MasterPage();
