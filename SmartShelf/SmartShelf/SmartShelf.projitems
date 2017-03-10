@@ -40,6 +40,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SmartShelfService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entities\JsonObjects.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
@@ -80,5 +81,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Entities\" />
   </ItemGroup>
 </Project>

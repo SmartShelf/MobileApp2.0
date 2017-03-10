@@ -1,17 +1,150 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using SmartShelf.Entities;
 
 namespace SmartShelf
 {
     public static class SmartShelfService
     {
+		
         private static IList<ShelfItem> shelfItems = new List<ShelfItem>();
 
-        public static bool Authenticate(string userName, string password)
+		private static SmartShelfDoc userDoc = new SmartShelfDoc();
+
+		private static List<Product> products = new List<Product>();
+
+		private static async Task LoadProducts(HttpClient client)
+		{
+			try
+			{
+				var uri = new Uri(string.Format("http://smartshelf.mybluemix.net/main/products", string.Empty));
+				var response = await client.GetAsync(uri);
+				if (response.IsSuccessStatusCode)
+				{
+					var content = await response.Content.ReadAsStringAsync();
+					products = JsonConvert.DeserializeObject<List<Product>>(content);
+
+
+
+
+
+				}
+			}
+			catch (Exception ex)
+			{
+				return;
+			}
+		}
+
+        public static async Task<bool> Authenticate(string userName, string password, HttpClient client)
         {
-            shelfItems = GetShelfItems();  ////TODO - replace call to real service
-            return true;
+			try
+			{
+				var uri = new Uri(string.Format("http://smartshelf.mybluemix.net/main/loginGetDoc?username={0}&password={1}", userName, password));
+				var response = await client.GetAsync(uri);
+				if (response.IsSuccessStatusCode)
+				{
+					var content = await response.Content.ReadAsStringAsync();
+					userDoc = JsonConvert.DeserializeObject<SmartShelfDoc>(content);
+
+					string perc = "";
+					long tempPerc = 0;
+
+					ShelfItem tempShelf;
+					ScaleItem tempScale;
+					double tmpDouble;
+					DateTime tmpDate;
+					foreach (var shelf in userDoc.shelfs)
+					{
+						tempShelf = new ShelfItem();
+						tempShelf.Id = shelf.id;
+						tempShelf.Name = shelf.name;
+
+						tempShelf.Scales = new List<ScaleItem>();
+
+						foreach (var scale in shelf.scales)
+						{
+							tempScale = new ScaleItem();
+							tempScale.ScaleId = scale.id.ToString();
+							tempScale.Name = scale.id.ToString();
+							tmpDouble = 0;
+							if (double.TryParse(scale.weight, out tmpDouble))
+							{
+								tempScale.CurrentWeight = tmpDouble;
+							}
+							else
+							{
+								tempScale.CurrentWeight = 0;
+							}
+							tmpDate = DateTime.Now.AddDays(7);
+							if (DateTime.TryParse(scale.estimatedDate, out tmpDate))
+							{
+								tempScale.EstimateRefillDate = tmpDate;
+							}
+							else
+							{
+								tempScale.EstimateRefillDate = DateTime.Now.AddDays(7);
+							}
+
+							if (DateTime.TryParse(scale.registerDate, out tmpDate))
+							{
+								tempScale.StartingDate = tmpDate;
+							}
+							else
+							{
+								tempScale.StartingDate = DateTime.Now;
+							}
+
+							double calcPerc = 0;
+							double temp;
+							await LoadProducts(client);
+							if (!string.IsNullOrEmpty(scale.productId))
+							{
+								var product = products.Where(p => p.id == scale.productId).FirstOrDefault();
+								if (product != null)
+								{
+									if (double.TryParse(product.weight, out temp))
+									{
+										tempScale.StartingWeight = temp;
+									}
+									if (temp != 0)
+									{
+										calcPerc = tempScale.CurrentWeight * 100 / temp;
+										perc = string.Format("{0:0.00}", calcPerc) + "%";
+
+									}
+									tempScale.Name = product.name;
+								}
+							}
+							tempScale.ScaleName = scale.id.ToString();
+							tempScale.ShelfName = tempShelf.Name;
+
+							tempShelf.Scales.Add(tempScale);
+
+						}
+						shelfItems.Add(tempShelf);
+					}
+
+					return true;
+				}
+				else
+				{
+					//bluemix is down, temp solution
+					shelfItems = GetShelfItems();  ////TODO - replace call to real service
+					return true;
+					//var s = response.StatusCode.ToString();
+					//return false;
+				}
+			}
+			catch (Exception ex)
+			{
+				return false;
+			}
         }
 
         public static IList<ShelfItem> Shelves { get { return shelfItems; } }
