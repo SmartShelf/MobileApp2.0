@@ -23,5 +23,7 @@ namespace SmartShelf
         public string ShelfId { get; set; }
 
         public string ScaleId { get; set; }
+
+		public string url { get; set; }
     }
 }

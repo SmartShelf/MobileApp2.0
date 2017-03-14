@@ -39,7 +39,8 @@ namespace SmartShelf
                     Application.Current.MainPage = mainPage;
                 } else
                 {
-                    ////TODO: handle failed authentication
+                    LoginMessage.Text = "Login unsuccessful. Please try again.";
+
                 }
             }
             catch (Exception ex)
@@ -48,5 +49,20 @@ namespace SmartShelf
                 x.Text = string.Format("{0} : {1}", ex.Message, ex.StackTrace);
             }
         }
+		private async void register_button_Clicked(object sender, EventArgs e)
+		{
+			try
+			{
+				
+					LoginMessage.Text = "Registration unavailable at the moment... Work in progress";
+
+
+			}
+			catch (Exception ex)
+			{
+				var x = this.FindByName<Label>("messageLabel");
+				x.Text = string.Format("{0} : {1}", ex.Message, ex.StackTrace);
+			}
+		}
     }
 }

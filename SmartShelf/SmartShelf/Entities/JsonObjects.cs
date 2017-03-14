@@ -39,6 +39,7 @@ namespace SmartShelf.Entities
 		public string packageWeight { get; set; }
 		public string name { get; set; }
 		public string barcode { get; set; }
+		public string url { get; set; }
 
 
 

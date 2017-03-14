@@ -18,7 +18,8 @@
         <Entry x:Name="password" Placeholder="" IsPassword="True" />
         
         <Button x:Name="submit_button" Text="Sign In" Clicked="submit_button_Clicked" />
-        <Button x:Name="register_button" Text="Register as a new user" />
+        <Button x:Name="register_button" Text="Register as a new user" Clicked="register_button_Clicked" />
+		<Label x:Name="LoginMessage" Text="" VerticalOptions="Center" HorizontalOptions="Center" />
         <Label Text="Or Sign In with" VerticalOptions="Center" HorizontalOptions="Center" Margin="10,10,10,10" />
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">

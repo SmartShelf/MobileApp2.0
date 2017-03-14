@@ -119,11 +119,12 @@ namespace SmartShelf
 
 									}
 									tempScale.Name = product.name;
+									tempScale.url = product.url;
 								}
 							}
 							tempScale.ScaleName = scale.id.ToString();
 							tempScale.ShelfName = tempShelf.Name;
-
+							tempScale.ShelfId = tempShelf.Id;
 							tempShelf.Scales.Add(tempScale);
 
 						}
@@ -134,11 +135,9 @@ namespace SmartShelf
 				}
 				else
 				{
-					//bluemix is down, temp solution
-					shelfItems = GetShelfItems();  ////TODO - replace call to real service
-					return true;
-					//var s = response.StatusCode.ToString();
-					//return false;
+					
+					return false;
+
 				}
 			}
 			catch (Exception ex)

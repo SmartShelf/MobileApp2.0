@@ -20,10 +20,10 @@
             </Grid.ColumnDefinitions>
             <Grid.Children>
                 <StackLayout Orientation="Vertical" Grid.Column="0" Grid.Row="0" Padding="5">
-                    <Label Text="{Binding Name}" FontSize="Large" />
-                    <Label Text="{Binding CurrentWeight, StringFormat='Current Weight: {0}g'}" FontSize="Small" />
-                    <Label Text="{Binding StartingWeight, StringFormat='Initial Weight: {0}g'}" FontSize="Small" />
-                    <Label Text="{Binding StartingDate, StringFormat='Fill Date: {0:MM/dd/yyyy}'}" FontSize="Small" />
+                    <Label x:Name="lblProductName" Text="{Binding Name}" FontSize="Large" />
+                    <Label x:Name="lblWeight" Text="{Binding CurrentWeight, StringFormat='Current Weight: {0}g'}" FontSize="Small" />
+                    <Label x:Name="lblStartingWeight" Text="{Binding StartingWeight, StringFormat='Initial Weight: {0}g'}" FontSize="Small" />
+                    <Label x:Name="lblStartingDate" Text="{Binding StartingDate, StringFormat='Fill Date: {0:MM/dd/yyyy}'}" FontSize="Small" />
                     <Label Text="{Binding EstimateRefillDate, StringFormat='Est. Refill Date: {0:MM/dd/yyyy}'}" FontSize="Small" />
                 </StackLayout>
                 <ContentView x:Name="pieGraphContentView" Grid.Column="1" Grid.Row="0">
@@ -34,7 +34,7 @@
                 </AbsoluteLayout>
                 <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Padding="5,0,5,0">
                     <Label Text="{Binding ScaleName, StringFormat='{0} -'}" FontSize="Small" />
-                    <Label Text="{Binding ShelfName}" FontSize="Small" />
+                    <Label  Text="{Binding ShelfName}" FontSize="Small" />
                 </StackLayout>
                 <!--
                 <AbsoluteLayout x:Name="bottomAbsoluteLayout" Grid.Column="1" Grid.Row="1">
