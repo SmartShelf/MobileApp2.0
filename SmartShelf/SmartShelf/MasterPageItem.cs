@@ -11,5 +11,7 @@ namespace SmartShelf
         public string IconSource { get; set; }
 
         public Type TargetType { get; set; }
+
+        public object Data { get; set; }
     }
 }

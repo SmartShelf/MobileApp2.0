@@ -51,7 +51,8 @@ namespace SmartShelf
                 {
                     Title = shelfItem.Name,
                     IconSource = string.Empty,
-                    TargetType = typeof(DashboardPage)
+                    TargetType = typeof(EditSmartShelfPage),
+                    Data = shelfItem
                 });
 
                 foreach (var scaleItem in shelfItem.Scales)
@@ -60,7 +61,8 @@ namespace SmartShelf
                     {
                         Title = string.Format("          {0} - {1}", scaleItem.Name, scaleItem.ScaleName),
                         IconSource = string.Empty,
-                        TargetType = typeof(DashboardPage)
+                        TargetType = typeof(EditScalePage),
+                        Data = scaleItem
                     });
                 }
             }
@@ -75,8 +77,19 @@ namespace SmartShelf
             var item = e.SelectedItem as MasterPageItem;
             if (item != null)
             {
-                App.MasterDetail.Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-                staticListView.SelectedItem = null;
+                var page = (Page)Activator.CreateInstance(item.TargetType);
+               
+                if (page.GetType() == typeof(EditScalePage))
+                {
+                    ((EditScalePage)page).ScaleItem = (ScaleItem)item.Data;
+                }
+                else
+                {
+                    ((EditSmartShelfPage)page).ShelfItem = (ShelfItem)item.Data;
+                }
+
+                App.MasterDetail.Detail = new NavigationPage(page);
+                shelvesListView.SelectedItem = null;
                 App.MasterDetail.IsPresented = false;
             }
         }

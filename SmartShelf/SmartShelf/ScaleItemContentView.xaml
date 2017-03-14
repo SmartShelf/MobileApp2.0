@@ -29,16 +29,18 @@
                 <ContentView x:Name="pieGraphContentView" Grid.Column="1" Grid.Row="0">
 
                 </ContentView>
-                <AbsoluteLayout x:Name="topAbsoluteLayout" Grid.Column="1" Grid.Row="0">
+                <AbsoluteLayout x:Name="topAbsoluteLayout" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 
                 </AbsoluteLayout>
                 <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Padding="5,0,5,0">
                     <Label Text="{Binding ScaleName, StringFormat='{0} -'}" FontSize="Small" />
                     <Label Text="{Binding ShelfName}" FontSize="Small" />
                 </StackLayout>
+                <!--
                 <AbsoluteLayout x:Name="bottomAbsoluteLayout" Grid.Column="1" Grid.Row="1">
 
                 </AbsoluteLayout>
+                -->
             </Grid.Children>
         </Grid>
     </Frame.Content>

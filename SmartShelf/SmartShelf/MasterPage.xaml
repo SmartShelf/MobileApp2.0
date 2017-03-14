@@ -9,7 +9,7 @@
 		<OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,0,0,0" />
 	</ContentPage.Padding>
     <StackLayout HorizontalOptions="FillAndExpand">
-        <ListView x:Name="staticListView" HorizontalOptions="FillAndExpand" SeparatorVisibility="Default">
+        <ListView x:Name="staticListView" HorizontalOptions="FillAndExpand" SeparatorVisibility="Default" HeightRequest="150">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell Text="{Binding Title}" ImageSource="{Binding IconSource}" />
@@ -17,8 +17,8 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <Label Text="My SmartShelves" FontAttributes="Bold" />
-        <ListView x:Name="shelvesListView" SeparatorVisibility="Default">
+        <Label Text="My SmartShelves" FontAttributes="Bold" Margin="10,0,0,0"/>
+        <ListView x:Name="shelvesListView" SeparatorVisibility="Default"  Margin="10,0,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Title}" />

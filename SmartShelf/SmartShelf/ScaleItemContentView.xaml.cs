@@ -33,6 +33,15 @@ namespace SmartShelf
 
             var infoImage = new Image();
             infoImage.Source = "info_circle_18_36.png";
+            var tapGestureRecognizer1 = new TapGestureRecognizer();
+            tapGestureRecognizer1.Tapped += (s, e) =>
+            {
+                var editScalePage = new EditScalePage();
+                editScalePage.ScaleItem = scaleItem;
+                App.MasterDetail.Detail = new NavigationPage(new EditScalePage());
+            };
+            infoImage.GestureRecognizers.Add(tapGestureRecognizer1);
+
 
             AbsoluteLayout.SetLayoutBounds(infoImage, new Rectangle(1f, 0f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(infoImage, AbsoluteLayoutFlags.PositionProportional);
@@ -46,10 +55,10 @@ namespace SmartShelf
 				Device.OpenUri(new Uri("https://www.amazon.com/Quaker-Instant-Oatmeal-Variety-Breakfast/dp/B01KMHY5XI?th=1"));
 			};
 			shoppingCartImage.GestureRecognizers.Add(tapGestureRecognizer);
-
+            shoppingCartImage.Margin = new Thickness(0, 0, 5, 5);
             AbsoluteLayout.SetLayoutBounds(shoppingCartImage, new Rectangle(1f, 1f, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
             AbsoluteLayout.SetLayoutFlags(shoppingCartImage, AbsoluteLayoutFlags.PositionProportional);
-            bottomAbsoluteLayout.Children.Add(shoppingCartImage);
+            topAbsoluteLayout.Children.Add(shoppingCartImage);
         }
 
         public ScaleItem Item { get; set; }
