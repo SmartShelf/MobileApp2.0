@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZXing.Mobile;
 
 using Xamarin.Forms;
 
@@ -15,6 +16,16 @@ namespace SmartShelf
 		public EditScalePage ()
 		{
 			InitializeComponent ();
+			btnScan.Clicked += btnScanClick;
+		}
+		public async void btnScanClick(object obj, EventArgs e)
+		{
+
+			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+			var result = await scanner.Scan();
+
+			if (result != null)
+				Console.WriteLine("Scanned Barcode: " + result.Text);
 		}
 
         public ScaleItem ScaleItem

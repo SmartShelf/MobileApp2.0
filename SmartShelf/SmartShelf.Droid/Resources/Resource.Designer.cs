@@ -3302,6 +3302,12 @@ namespace SmartShelf.Droid
 			global::NControl.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::SmartShelf.Droid.Resource.Styleable.ViewStubCompat_android_layout;
 			global::NGraphics.Android.Resource.String.library_name = global::SmartShelf.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::SmartShelf.Droid.Resource.Attribute.actionBarSize;
+			global::ZXing.Net.Mobile.Forms.Android.Resource.Layout.zxingscanneractivitylayout = global::SmartShelf.Droid.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Net.Mobile.Forms.Android.Resource.Layout.zxingscannerfragmentlayout = global::SmartShelf.Droid.Resource.Layout.zxingscannerfragmentlayout;
+			global::ZXing.Net.Mobile.Forms.Android.Resource.String.library_name = global::SmartShelf.Droid.Resource.String.library_name;
+			global::ZXing.Mobile.Resource.Id.contentFrame = global::SmartShelf.Droid.Resource.Id.contentFrame;
+			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::SmartShelf.Droid.Resource.Layout.zxingscanneractivitylayout;
+			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::SmartShelf.Droid.Resource.Layout.zxingscannerfragmentlayout;
 		}
 		
 		public partial class Animation
@@ -6203,6 +6209,9 @@ namespace SmartShelf.Droid
 			// aapt resource value: 0x7f0c003d
 			public const int collapseActionView = 2131492925;
 			
+			// aapt resource value: 0x7f0c00b0
+			public const int contentFrame = 2131493040;
+			
 			// aapt resource value: 0x7f0c004e
 			public const int contentPanel = 2131492942;
 			
@@ -6314,8 +6323,8 @@ namespace SmartShelf.Droid
 			// aapt resource value: 0x7f0c0048
 			public const int list_item = 2131492936;
 			
-			// aapt resource value: 0x7f0c00b1
-			public const int masked = 2131493041;
+			// aapt resource value: 0x7f0c00b2
+			public const int masked = 2131493042;
 			
 			// aapt resource value: 0x7f0c009f
 			public const int media_actions = 2131493023;
@@ -6614,8 +6623,8 @@ namespace SmartShelf.Droid
 			// aapt resource value: 0x7f0c0002
 			public const int view_offset_helper = 2131492866;
 			
-			// aapt resource value: 0x7f0c00b0
-			public const int visible = 2131493040;
+			// aapt resource value: 0x7f0c00b1
+			public const int visible = 2131493041;
 			
 			// aapt resource value: 0x7f0c0091
 			public const int volume_item_container = 2131493009;
@@ -6904,6 +6913,12 @@ namespace SmartShelf.Droid
 			
 			// aapt resource value: 0x7f030041
 			public const int support_simple_spinner_dropdown_item = 2130903105;
+			
+			// aapt resource value: 0x7f030042
+			public const int zxingscanneractivitylayout = 2130903106;
+			
+			// aapt resource value: 0x7f030043
+			public const int zxingscannerfragmentlayout = 2130903107;
 			
 			static Layout()
 			{

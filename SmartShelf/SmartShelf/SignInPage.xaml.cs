@@ -31,10 +31,11 @@ namespace SmartShelf
                     var mainPage = new MainPage();
                     mainPage.Title = "Main";
                     mainPage.Master = new MasterPage();
-                    mainPage.Detail = new DashboardPage();
+                    //mainPage.Detail = new DashboardPage();
                     mainPage.MasterBehavior = MasterBehavior.Default;
 
                     App.MasterDetail = mainPage;
+					App.MasterDetail.Detail = new NavigationPage(new DashboardPage());
 
                     Application.Current.MainPage = mainPage;
                 } else

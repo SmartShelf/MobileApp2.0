@@ -21,6 +21,22 @@ namespace SmartShelf
             this.BindingContext = scaleItem;
             this.Item = scaleItem;
 			InitializeComponent();
+			double percent = 0;
+			if (scaleItem.CurrentWeight > 0 && scaleItem.StartingWeight > 0)
+			{
+				percent = 100 * (scaleItem.CurrentWeight / scaleItem.StartingWeight);
+			}
+			Color pieColor = Color.Green;
+			if (percent < 15)
+			{
+				pieColor = Color.Red;
+			}
+			else if (percent < 50)
+			{
+
+				pieColor = Color.Yellow;
+
+			}
 
             var pie = new Cross.Pie.Forms.CrossPie();
             pie.Title = string.Empty;
@@ -30,7 +46,7 @@ namespace SmartShelf
             pie.IsTitleOnTop = false;
             pie.IsValueVisible = false;
             pie.StartAngle = -90;
-            pie.Add(new Cross.Pie.Forms.PieItem { Title = string.Empty, Value = scaleItem.CurrentWeight, Color = Color.Green});
+            pie.Add(new Cross.Pie.Forms.PieItem { Title = string.Empty, Value = scaleItem.CurrentWeight, Color = pieColor});
             pie.Add(new Cross.Pie.Forms.PieItem { Title = string.Empty, Value = (scaleItem.StartingWeight - scaleItem.CurrentWeight), Color = Color.Gray });
             pie.Update();
 
@@ -103,7 +119,22 @@ namespace SmartShelf
 
 						if (double.TryParse(s.weight, out tempDouble))
 							weight1 = tempDouble;
-						
+						double percent = 0;
+						if (weight1 > 0 && scaleItem.StartingWeight > 0)
+						{
+							percent = 100 * (weight1 / scaleItem.StartingWeight);
+						}
+						Color pieColor = Color.Green;
+						if (percent < 15)
+						{
+							pieColor = Color.Red;
+						}
+						else if (percent < 50)
+						{
+
+							pieColor = Color.Yellow;
+
+						}
 						lblWeight.Text = string.Format("Current Weight: {0}g", s.weight);
 						var pie = new Cross.Pie.Forms.CrossPie();
 						pie.Title = string.Empty;
@@ -113,7 +144,7 @@ namespace SmartShelf
 						pie.IsTitleOnTop = false;
 						pie.IsValueVisible = false;
 						pie.StartAngle = -90;
-						pie.Add(new Cross.Pie.Forms.PieItem { Title = string.Empty, Value = weight1, Color = Color.Green });
+						pie.Add(new Cross.Pie.Forms.PieItem { Title = string.Empty, Value = weight1, Color = pieColor });
 						pie.Add(new Cross.Pie.Forms.PieItem { Title = string.Empty, Value = (scaleItem.StartingWeight - weight1), Color = Color.Gray });
 						pie.Update();
 

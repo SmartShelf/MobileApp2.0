@@ -32,6 +32,12 @@ namespace SmartShelf
                 IconSource = "plus_circle_36_72.png",
                 TargetType = typeof(AddSmartShelfPage)
             });
+			masterPageItems.Add(new MasterPageItem
+			{
+				Title = "Logout",
+				IconSource = "plus_circle_36_72.png",
+				TargetType = typeof(SignInPage)
+			});
 
             staticListView.ItemsSource = masterPageItems;
 
@@ -88,9 +94,10 @@ namespace SmartShelf
                     ((EditSmartShelfPage)page).ShelfItem = (ShelfItem)item.Data;
                 }
 
-                App.MasterDetail.Detail = new NavigationPage(page);
-                shelvesListView.SelectedItem = null;
-                App.MasterDetail.IsPresented = false;
+				App.MasterDetail.Detail = new NavigationPage(page);
+				shelvesListView.SelectedItem = null;
+				App.MasterDetail.IsPresented = false;
+
             }
         }
 
@@ -99,9 +106,17 @@ namespace SmartShelf
             var item = e.SelectedItem as MasterPageItem;
             if (item != null)
             {
-                App.MasterDetail.Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-                staticListView.SelectedItem = null;
-                App.MasterDetail.IsPresented = false;
+				if (item.TargetType == typeof(SignInPage))
+				{
+					App.Current.MainPage = new SignInPage();
+
+				}
+				else
+				{
+					App.MasterDetail.Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
+					staticListView.SelectedItem = null;
+					App.MasterDetail.IsPresented = false;
+				}
             }
         }
     }
