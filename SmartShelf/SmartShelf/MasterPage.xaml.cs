@@ -99,7 +99,7 @@ namespace SmartShelf
         private void AddToolbar()
         {
             var toolbarItem = new ToolbarItem("Menu", "ellipsis_18_36.png", async () => {
-                string result = await DisplayActionSheet("", "Cancel", null, "Logout");
+                string result = await DisplayActionSheet("", "", null, "Logout");
 
                 if (result == "Logout")
                 {

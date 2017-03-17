@@ -5,7 +5,8 @@
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
     </ContentPage.Padding>
-    <StackLayout Orientation="Vertical" Padding="10,10,10,10">
+    <AbsoluteLayout x:Name="absoluteLayout" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+    <StackLayout Orientation="Vertical" Padding="10,10,10,10" HorizontalOptions="CenterAndExpand" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1, 1, 1, 1">
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Image Source="icon_72.png" />
             <Label Text="SmartShelf" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" />
@@ -30,5 +31,5 @@
         </StackLayout>
 		
     </StackLayout>
-	
+    </AbsoluteLayout>
 </ContentPage>
