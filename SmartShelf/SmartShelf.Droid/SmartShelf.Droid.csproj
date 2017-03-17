@@ -27,7 +27,8 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidTlsProvider></AndroidTlsProvider>
+    <AndroidTlsProvider>
+    </AndroidTlsProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -255,6 +256,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\camera_36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\ellipsis_36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\ellipsis_18_36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\logo_2_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\watson_36.png" />
   </ItemGroup>
   <Import Project="..\SmartShelf\SmartShelf.projitems" Label="Shared" Condition="Exists('..\SmartShelf\SmartShelf.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

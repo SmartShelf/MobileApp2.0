@@ -14,6 +14,7 @@ namespace SmartShelf
 		{
 			InitializeComponent();
             SetStaticMasterPageItems();
+            AddToolbar();
             SetMyShelves();
         }
 
@@ -32,12 +33,6 @@ namespace SmartShelf
                 IconSource = "plus_circle_36_72.png",
                 TargetType = typeof(AddSmartShelfPage)
             });
-			masterPageItems.Add(new MasterPageItem
-			{
-				Title = "Logout",
-				IconSource = "plus_circle_36_72.png",
-				TargetType = typeof(SignInPage)
-			});
 
             staticListView.ItemsSource = masterPageItems;
 
@@ -99,6 +94,20 @@ namespace SmartShelf
 				App.MasterDetail.IsPresented = false;
 
             }
+        }
+
+        private void AddToolbar()
+        {
+            var toolbarItem = new ToolbarItem("Menu", "ellipsis_18_36.png", async () => {
+                string result = await DisplayActionSheet("", "Cancel", null, "Logout");
+
+                if (result == "Logout")
+                {
+                    App.Current.MainPage = new SignInPage();
+                }
+            });
+
+            ToolbarItems.Add(toolbarItem);
         }
 
         private void StaticListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

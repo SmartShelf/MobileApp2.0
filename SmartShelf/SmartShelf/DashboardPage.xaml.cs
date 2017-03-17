@@ -14,8 +14,24 @@ namespace SmartShelf
 		{
 			InitializeComponent ();
             SetScaleItems();
+
+           // DoToolbar();
 		}
 
+        private void DoToolbar()
+        {
+
+            var toolbarItem = new ToolbarItem("Menu", "ellipsis_18_36.png", async () => {
+                string result = await DisplayActionSheet("", "Cancel", null, "Logout");
+
+                if (result == "Logout")
+                {
+                    App.Current.MainPage = new SignInPage();
+                }
+            });
+
+            ToolbarItems.Add(toolbarItem);
+        }
        
         private void SetScaleItems()
         {
