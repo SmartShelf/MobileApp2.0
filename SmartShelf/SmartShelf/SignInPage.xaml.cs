@@ -17,6 +17,7 @@ namespace SmartShelf
 		{
 			client = new HttpClient();
             this.BindingContext = this;
+
 			InitializeComponent ();
 		}
 
@@ -24,6 +25,7 @@ namespace SmartShelf
         {
             try
             {
+				
                 var username = this.username.Text;
                 var password = this.password.Text;
 				var isAuth = await SmartShelfService.Authenticate(username, password, client);
@@ -40,12 +42,14 @@ namespace SmartShelf
                     Application.Current.MainPage = mainPage;
                 } else
                 {
+					
                     LoginMessage.Text = "Login unsuccessful. Please try again.";
 
                 }
             }
             catch (Exception ex)
             {
+				
                 var x = this.FindByName<Label>("messageLabel");
                 x.Text = string.Format("{0} : {1}", ex.Message, ex.StackTrace);
             }

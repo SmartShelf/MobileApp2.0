@@ -146,8 +146,7 @@ namespace SmartShelf
 			}
         }
 
-        public static IList<ShelfItem> Shelves { get { return shelfItems; } }
-        
+		public static IList<ShelfItem> Shelves { get { return shelfItems; } }
 
         private static IList<ShelfItem> GetShelfItems()
         {

@@ -24,8 +24,8 @@
 	<string>9.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>SmartShelf</string>
-    <key>NSCameraUsageDescription</key>
-    <string>Can we use your camera</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Can we use your camera</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.sogeti.SmartShelf</string>
 	<key>CFBundleVersion</key>

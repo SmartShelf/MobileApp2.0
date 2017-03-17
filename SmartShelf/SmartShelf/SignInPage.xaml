@@ -28,5 +28,7 @@
             <Image Source="instagram_52_72.png" />
             <Image Source="twitter_52_72.png" />
         </StackLayout>
+		
     </StackLayout>
+	
 </ContentPage>
