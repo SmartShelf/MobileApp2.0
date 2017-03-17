@@ -10,7 +10,9 @@
     <ScrollView x:Name="scrollView" Orientation="Vertical" Padding="5">
         <ScrollView.Content>
             <StackLayout Orientation="Vertical" x:Name="stackLayout">
-            </StackLayout>
+
+	        </StackLayout>
         </ScrollView.Content>
     </ScrollView>
+	
 </ContentPage>

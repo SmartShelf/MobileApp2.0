@@ -40,7 +40,7 @@ namespace SmartShelf
         }
 
 
-        private void SetMyShelves()
+        public void SetMyShelves()
         {
             var shelfItems = SmartShelfService.Shelves;
 

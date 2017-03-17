@@ -24,7 +24,8 @@
                     <Label x:Name="lblWeight" Text="{Binding CurrentWeight, StringFormat='Current Weight: {0}g'}" FontSize="Small" />
                     <Label x:Name="lblStartingWeight" Text="{Binding StartingWeight, StringFormat='Initial Weight: {0}g'}" FontSize="Small" />
                     <Label x:Name="lblStartingDate" Text="{Binding StartingDate, StringFormat='Fill Date: {0:MM/dd/yyyy}'}" FontSize="Small" />
-                    <Label Text="{Binding EstimateRefillDate, StringFormat='Est. Refill Date: {0:MM/dd/yyyy}'}" FontSize="Small" />
+                    <Label x:Name="lblPredication" />
+					<!--<Label Text="{Binding EstimateRefillDate, StringFormat='Est. Refill Date: {0:MM/dd/yyyy}'}" FontSize="Small" />-->
                 </StackLayout>
                 <ContentView x:Name="pieGraphContentView" Grid.Column="1" Grid.Row="0">
 

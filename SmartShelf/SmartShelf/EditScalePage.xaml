@@ -4,12 +4,23 @@
              x:Class="SmartShelf.EditScalePage"
              Title="Edit Scale">
     <StackLayout Orientation="Vertical" Padding="10,10,10,10">
-        <Label Text="Scale Name" FontSize="Small"/>
-        <Entry x:Name="scaleName" Text="{Binding Name}" Placeholder="" />
-
-        <Label Text="Select Product By" FontSize="Small"/>
+		<Label FontSize="Medium" Text="Select New Product for"></Label>
+		<Label Text="Shelf:" />
+		<Label x:Name="shelfName" Text="{Binding ShelfName, Mode=TwoWay}" Font="Bold,20" />
+        <Label Text="Scale:" />
+		<Label x:Name="scaleName" Text="{Binding ScaleId,  Mode=TwoWay}" Font="Bold,20" />
+        <Label Text="Current Product:" FontSize="Small"/>
+		<Label x:Name="lblProduct" Text="{Binding Name, Mode=TwoWay}" Font="Bold,20" FontSize="Small"/>
+		<Label Text="Choose From:" FontSize="Small"/>
+		<Label Text="1. Registered SmartShelf Products " FontSize="Small" />
+		<StackLayout x:Name ="staticLayout">
+          </StackLayout>
+		<Button x:Name="btnUpdate" Text="Update" />
+		<Label Text="2. Scan Barcode" FontSize="Small" />
         <Entry x:Name="selectProductBy" Placeholder="" />
+		
         <Button x:Name="btnScan" Text="Scan" />
+		
 
     </StackLayout>
 </ContentPage>

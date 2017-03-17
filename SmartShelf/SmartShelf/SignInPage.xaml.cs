@@ -17,6 +17,7 @@ namespace SmartShelf
 		{
 			client = new HttpClient();
             this.BindingContext = this;
+
 			InitializeComponent ();
 
             //var indicator = new ActivityIndicator()
@@ -53,12 +54,14 @@ namespace SmartShelf
                     Application.Current.MainPage = mainPage;
                 } else
                 {
+					
                     LoginMessage.Text = "Login unsuccessful. Please try again.";
 
                 }
             }
             catch (Exception ex)
             {
+				
                 var x = this.FindByName<Label>("messageLabel");
                 x.Text = string.Format("{0} : {1}", ex.Message, ex.StackTrace);
             }
