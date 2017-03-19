@@ -5,7 +5,7 @@
              Title="Dashboard"
              >
 	<ContentPage.Padding>
-		<OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="0,0,0,0" />
+		<OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0" Android="0,0,0,0" />
 	</ContentPage.Padding>
     <ScrollView x:Name="scrollView" Orientation="Vertical" Padding="5">
         <ScrollView.Content>

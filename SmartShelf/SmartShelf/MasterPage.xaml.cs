@@ -33,6 +33,12 @@ namespace SmartShelf
                 IconSource = "plus_circle_36_72.png",
                 TargetType = typeof(AddSmartShelfPage)
             });
+			masterPageItems.Add(new MasterPageItem
+			{
+				Title = "Logout",
+				//IconSource = "plus_circle_36_72.png",
+				TargetType = typeof(SignInPage)
+			});
 
             staticListView.ItemsSource = masterPageItems;
 
@@ -84,6 +90,11 @@ namespace SmartShelf
                 {
                     ((EditScalePage)page).ScaleItem = (ScaleItem)item.Data;
                 }
+				else if (page.GetType() == typeof(SignInPage))
+				{
+					App.Current.MainPage = new SignInPage();
+					return;
+				}
                 else
                 {
                     ((EditSmartShelfPage)page).ShelfItem = (ShelfItem)item.Data;
@@ -98,18 +109,40 @@ namespace SmartShelf
 
         private void AddToolbar()
         {
-            var toolbarItem = new ToolbarItem("Menu", "ellipsis_18_36.png", async () => {
-                string result = await DisplayActionSheet("", "", null, "Logout");
+			ToolbarItem toolbarItem = null;
+			if (Device.OS == TargetPlatform.iOS)
+			{
+				toolbarItem = new ToolbarItem();
+				toolbarItem.Text = "Logout";
+				toolbarItem.Clicked += LogoutClick;
+			}
 
-                if (result == "Logout")
-                {
-                    App.Current.MainPage = new SignInPage();
-                }
-            });
+			if (Device.OS == TargetPlatform.Android)
+			{
+				toolbarItem = new ToolbarItem("Menu", "ellipsis_18_36.png", async () =>
+				{
+					string result = await DisplayActionSheet("", "", null, "Logout");
+
+					if (result == "Logout")
+					{
+						App.Current.MainPage = new SignInPage();
+					}
+				});
+			}
+             
 
             ToolbarItems.Add(toolbarItem);
         }
+		private async void LogoutClick(object sender, EventArgs e)
+		{
+			string result = await DisplayActionSheet("", "", null, "Logout");
 
+			if (result == "Logout")
+			{
+				App.Current.MainPage = new SignInPage();
+			}
+
+		}
         private void StaticListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as MasterPageItem;

@@ -20,7 +20,7 @@
         <Entry x:Name="selectProductBy" Placeholder="" />
 		
         <Button x:Name="btnScan" Text="Scan" />
-		
+		<Label x:Name="lblMsg" Text=""  FontSize="Small"/>
 
     </StackLayout>
 </ContentPage>

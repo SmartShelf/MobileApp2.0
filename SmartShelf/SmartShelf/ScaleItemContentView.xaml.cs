@@ -83,7 +83,7 @@ namespace SmartShelf
 
 				// Watson predictive service
 				var watsonImage = new Image();
-				watsonImage.Source = "info_circle_18_36.png";
+				watsonImage.Source = "watson_36.png";
 				var tapGestureRecognizerWatson = new TapGestureRecognizer();
 				tapGestureRecognizerWatson.Tapped += (s, e) =>
 				{
@@ -162,12 +162,31 @@ namespace SmartShelf
 				if (response.IsSuccessStatusCode)
 				{
 					var content = await response.Content.ReadAsStringAsync();
-					//var prediction = JsonConvert.DeserializeObject<Shelf>(content);
-					lblPredication.Text = "You are running low!";
+					var prediction = JsonConvert.DeserializeObject<WatsonNotification>(content);
+					if (prediction.showNotification)
+					{
+						lblPredication.TextColor = Color.Red;
+						lblPredication.Text = "Product is almost out, click on cart to order more!";
+					}
+					else
+					{
+						
+						lblPredication.TextColor = Color.Blue;
+						lblPredication.Text = "Product supply is ok.";
+
+					}
+					var seconds = TimeSpan.FromSeconds(10);
+
+					Device.StartTimer(seconds, () =>
+					{
+						
+						lblPredication.Text = "";
+						return false;
+					});
 				}
 				else
 				{
-					lblPredication.Text = "";
+					
 				}
 			}
 

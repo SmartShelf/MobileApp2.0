@@ -1,33 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SmartShelf.AddSmartShelfPage"
              Title="Add SmartShelf"
              >
     <StackLayout Orientation="Vertical" Padding="10,10,10,10">
-        <Label Text="Shelf Name" FontSize="Small"/>
-        <Entry x:Name="shelfName" Placeholder="" />
-
-        <Label Text="Shelf Identifier" FontSize="Small"/>
-        <Entry x:Name="shelfIdentifier" Placeholder="" />
-
-    
-            <Label Text="Scale 1" FontSize="Large" HorizontalTextAlignment="Center"/>
-            <Label Text="Scale 1 Name" FontSize="Small"/>
-            <Entry x:Name="scale1Name" Placeholder="" />
-
-            <Label Text="Select Product By" FontSize="Small"/>
-            <Entry x:Name="select1ProductBy" Placeholder="" />
-        
-
-        
-            <Label Text="Scale 2" FontSize="Large" HorizontalTextAlignment="Center"/>
-            <Label Text="Scale 2 Name" FontSize="Small"/>
-            <Entry x:Name="scale2Name" Placeholder="" />
-
-            <Label Text="Select Product By" FontSize="Small"/>
-            <Entry x:Name="select2ProductBy" Placeholder="" />
-       
+            <Label Text="Register a New Smart Shelf (Enter or Scan barcode)" TextColor="Black" />
+                <Entry x:Name="txtShelfID" Text=""/>
+                <Label Text="Description"/>
+                <Entry x:Name="txtDescription" Text=""/>
+                <Button Text="Register"
+                          
+                          Clicked="OnRegisterShelfClicked" />
+               <Label x:Name="ShelfMessage" />
+              
 
     </StackLayout>
 </ContentPage>

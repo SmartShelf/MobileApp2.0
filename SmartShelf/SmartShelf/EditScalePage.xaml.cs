@@ -70,12 +70,13 @@ namespace SmartShelf
 		}
 		public async void btnScanClick(object obj, EventArgs e)
 		{
+			lblMsg.TextColor = Color.Black;
+			lblMsg.Text = "Scanning Barcode not available at the moment.";
+			//var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+			//var result = await scanner.Scan();
 
-			var scanner = new ZXing.Mobile.MobileBarcodeScanner();
-			var result = await scanner.Scan();
-
-			if (result != null)
-				Console.WriteLine("Scanned Barcode: " + result.Text);
+			//if (result != null)
+			//	Console.WriteLine("Scanned Barcode: " + result.Text);
 		}
 		public async void SaveShelf(Object sender, EventArgs e)
 		{
@@ -105,7 +106,9 @@ namespace SmartShelf
 							scaleItem.url = product.url;
 							var masterPage = (MasterPage)App.MasterDetail.Master;
 							masterPage.SetMyShelves();
-
+							lblMsg.TextColor = Color.Blue;
+							lblMsg.Text = "Scale has been updated.";
+							App.MasterDetail.Detail = new NavigationPage(new DashboardPage());
 						}
 
 

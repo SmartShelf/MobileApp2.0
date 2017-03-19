@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -40,7 +42,25 @@ namespace SmartShelf
 				return;
 			}
 		}
+		public static async Task DoAsyncPut(string url, string postData)
+		{
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+			request.Method = "PUT";
+			request.ContentType = "application/json";
 
+			byte[] postBytes = Encoding.UTF8.GetBytes(postData);
+			var content = new ByteArrayContent(postBytes);
+			content.Headers.ContentLength = postBytes.Length;
+
+			content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
+
+			using (var client = new HttpClient())
+			{
+				await client.PutAsync(url, content);
+			}
+
+
+		}
         public static async Task<bool> Authenticate(string userName, string password, HttpClient client)
         {
 			try
@@ -59,6 +79,7 @@ namespace SmartShelf
 					ScaleItem tempScale;
 					double tmpDouble;
 					DateTime tmpDate;
+					shelfItems.Clear();
 					foreach (var shelf in userDoc.shelfs)
 					{
 						tempShelf = new ShelfItem();
@@ -217,7 +238,7 @@ namespace SmartShelf
             };
 
             shelfItem.Scales = new List<ScaleItem>();
-            shelfItem.Scales.Add(new ScaleItem
+			shelfItem.Scales.Add(new ScaleItem
             {
                 Name = "Tang",
                 CurrentWeight = 355.0,
@@ -227,16 +248,16 @@ namespace SmartShelf
                 ScaleName = "Scale 1",
                 ShelfName = shelfItem.Name
             });
-            shelfItem.Scales.Add(new ScaleItem
-            {
-                Name = "Bread",
-                CurrentWeight = 355.0,
-                StartingWeight = 700.0,
-                StartingDate = DateTime.Parse("1/15/2017"),
-                EstimateRefillDate = DateTime.Parse("3/4/2017"),
-                ScaleName = "Scale 2",
-                ShelfName = shelfItem.Name
-            });
+			shelfItem.Scales.Add(new ScaleItem
+			{
+				Name = "Bread",
+				CurrentWeight = 355.0,
+				StartingWeight = 700.0,
+				StartingDate = DateTime.Parse("1/15/2017"),
+				EstimateRefillDate = DateTime.Parse("3/4/2017"),
+				ScaleName = "Scale 2",
+				ShelfName = shelfItem.Name
+			});
             shelfItems.Add(shelfItem);
 
             return shelfItems;

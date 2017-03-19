@@ -31,6 +31,10 @@ namespace SmartShelf.Entities
 		public string rev { get; set; }
 		public List<Shelf> shelfs { get; set; } 
 	}
+	public class WatsonNotification
+	{
+		public bool showNotification { get; set; }
+	}
 	public class Product
 	{
 		public string id { get; set; }

@@ -31,38 +31,23 @@ namespace SmartShelf
 			try
 			{
 				shelfItem.Name = shelfName.Text;
+
+				string url = "http://smartshelf.mybluemix.net/main/UpdateShelf?shelfId=" + shelfItem.Id + "&shelfName=" + shelfName.Text;
+				////client.ContentType = "application/json";
+
+				//string postBody = JsonConvert.SerializeObject(shelfItem);
+
+				HttpClient client = new HttpClient();
+				await client.PostAsync(new Uri(url), new StringContent(""));
+				await SmartShelfService.Authenticate("demouser", "123456", client);
 				var masterPage = (MasterPage)App.MasterDetail.Master;
 				masterPage.SetMyShelves();
-				var uri = new Uri(string.Format("http://smartshelf.mybluemix.net/main/shelf", string.Empty));
-				string url = "http://smartshelf.mybluemix.net/main/shelf";
-				//client.ContentType = "application/json";
-
-				string postBody = JsonConvert.SerializeObject(shelfItem);
-				string postData = JsonConvert.SerializeObject(shelfItem);
-				await DoAsyncPut(url, postData);
+				App.MasterDetail.Detail = new NavigationPage(new DashboardPage());
 			}
 			catch (Exception ex)
 			{
 			}
 		}
-		private async Task DoAsyncPut(string url, string postData)
-		{
-			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-			request.Method = "PUT";
-			request.ContentType = "application/json";
 
-			byte[] postBytes = Encoding.UTF8.GetBytes(postData);
-			var content = new ByteArrayContent(postBytes);
-			content.Headers.ContentLength = postBytes.Length;
-
-			content.Headers.ContentType = new MediaTypeWithQualityHeaderValue("application/json");
-
-			using (var client = new HttpClient())
-			{
-				await client.PutAsync(url, content);
-			}
-
-
-		}
     }
 }
